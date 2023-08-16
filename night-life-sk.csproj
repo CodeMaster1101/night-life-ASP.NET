@@ -22,10 +22,7 @@
 
   <ItemGroup>
     <Folder Include="Configuration\Security\" />
-    <Folder Include="Dto\Event\" />
     <Folder Include="Dto\User\" />
-    <Folder Include="Dto\Place\" />
-    <Folder Include="Mappers\" />
     <Folder Include="Scheduled\" />
   </ItemGroup>
 
