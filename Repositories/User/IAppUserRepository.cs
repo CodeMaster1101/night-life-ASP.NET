@@ -13,5 +13,6 @@ namespace night_life_sk.Repositories.user
         public void Update(AppUser appUser);
 
         public void Delete(int id);
+        public HashSet<AppUser> FindAllByPartyName(string eventName);
     }
 }

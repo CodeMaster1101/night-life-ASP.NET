@@ -4,6 +4,7 @@ using night_life_sk.Models;
 using night_life_sk.Services;
 using night_life_sk.Exceptions;
 using night_life_sk.Services.persistence;
+using night_life_sk.Dto.Place;
 
 namespace night_life_sk.Repositories.Event
 {
@@ -24,6 +25,12 @@ namespace night_life_sk.Repositories.Event
 
         public void Delete(int id) => entityPersistenceService.Delete<PartyEvent>(id);
 
-        public void Update(PartyEvent partyEvent) => entityPersistenceService.Update<PartyEvent>(partyEvent); 
+        public void Update(PartyEvent partyEvent) => entityPersistenceService.Update<PartyEvent>(partyEvent);
+        
+        public HashSet<PartyEvent> FindAllEventsByDate(DateTime date) =>
+            entityPersistenceService.FindAllEventsByDate(date);
+
+        HashSet<PartyEvent> IPartyEventRepository.FindAllFilteredEvents(FilteredEventsDto filteredEvents) =>
+            entityPersistenceService.FindAllFilteredEvents(filteredEvents);
     }
 }

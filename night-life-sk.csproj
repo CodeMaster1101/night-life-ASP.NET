@@ -8,10 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Repositories\Scheduled\**" />
+    <Content Remove="Repositories\Scheduled\**" />
+    <EmbeddedResource Remove="Repositories\Scheduled\**" />
+    <None Remove="Repositories\Scheduled\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.151" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.10">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="7.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.10">
       <PrivateAssets>all</PrivateAssets>
@@ -22,8 +31,7 @@
 
   <ItemGroup>
     <Folder Include="Configuration\Security\" />
-    <Folder Include="Dto\User\" />
-    <Folder Include="Scheduled\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

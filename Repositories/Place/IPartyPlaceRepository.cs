@@ -14,5 +14,6 @@ namespace night_life_sk.Repositories.place
         public void Update(PartyPlace partyPlace);
 
         public void Delete(int id);
+        PartyPlace FindByXYTime(double longitude, double latitude, DateTime date);
     }
 }

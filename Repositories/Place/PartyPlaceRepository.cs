@@ -21,5 +21,8 @@ namespace night_life_sk.Repositories.place
         public PartyPlace FindById(int id) => entityPersistenceService.FindById<PartyPlace>(id);
 
         public void Update(PartyPlace partyPlace) => entityPersistenceService.Update(partyPlace);
+
+        PartyPlace IPartyPlaceRepository.FindByXYTime(double longitude, double latitude, DateTime date) =>
+            entityPersistenceService.FindByXYTime(longitude, latitude, date);
     }
 }

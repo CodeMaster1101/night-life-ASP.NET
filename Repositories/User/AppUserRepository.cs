@@ -11,14 +11,17 @@ namespace night_life_sk.Repositories.user
             this.entityPersistenceService = entityPersistenceService;
         }
 
-        public void Add(AppUser appUser) => entityPersistenceService.Add<AppUser>(appUser);
+        public void Add(AppUser appUser) => entityPersistenceService.Add(appUser);
 
         public HashSet<AppUser> FindAll() => entityPersistenceService.FindAll<AppUser>();  
 
         public AppUser FindById(int id) => entityPersistenceService.FindById<AppUser>(id);
 
-        public void Update(AppUser appUser) => entityPersistenceService.Update<AppUser>(appUser);
+        public void Update(AppUser appUser) => entityPersistenceService.Update(appUser);
 
         public void Delete(int id) => entityPersistenceService.Delete<AppUser>(id);
+
+        public HashSet<AppUser> FindAllByPartyName(string eventName) => entityPersistenceService.FindAllGuestsByPartyName(eventName);
+        
     }
 }
