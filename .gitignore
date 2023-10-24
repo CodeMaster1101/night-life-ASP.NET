@@ -10,7 +10,9 @@
 *.TMP
 *.bak
 Thumbs.db
-
+.editorconfig
+*.csproj
+*.sln
 ## .NET Core specific
 project.lock.json
 project.fragment.lock.json
@@ -23,6 +25,7 @@ appsettings.Development.json
 
 ## VS Code
 .vscode/
+
 
 ## JetBrains Rider
 .idea/

@@ -1,15 +1,14 @@
-﻿using night_life_sk.Services.persistence;
-
+﻿
 namespace night_life_sk.Models
 {
-    public class AppUser : IEntity
+    internal class AppUser : IEntity
     {
         public int Id { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public string Email { get; set; }
-        public virtual HashSet<PartyPlace>? PartyPlaces { get; set;}
-        
+        internal string Username { get; set; }
+        internal string Password { get; set; }
+        internal string Email { get; set; }
+        internal virtual HashSet<PartyPlace>? PartyPlaces { get; set;}
+
         public AppUser ()
         {
             Email = string.Empty;
@@ -17,7 +16,7 @@ namespace night_life_sk.Models
             Password = string.Empty;
         }
 
-        public AppUser (string username, string password, string email)
+        internal AppUser (string username, string password, string email)
         {
             Email = email;
             Username = username;

@@ -1,6 +1,6 @@
 ﻿namespace night_life_sk.Dto.Event
 {
-    public record PartyEventDto(
+    internal record PartyEventDto(
     string Name,
     string Description,
     string Genre,

@@ -2,12 +2,12 @@
 
 namespace night_life_sk.Exceptions
 {
-    public class NightLifeException : Exception
+    internal class NightLifeException : Exception
     {
-        public NightLifeException() { }
+        internal NightLifeException() { }
 
-        public NightLifeException(string message) : base(message) { }
+        internal NightLifeException(string message) : base(message) { }
 
-        public NightLifeException(string message, Exception inner) : base(message, inner) { }
+        internal NightLifeException(string message, Exception inner) : base(message, inner) { }
     }
 }

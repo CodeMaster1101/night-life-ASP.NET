@@ -1,16 +1,14 @@
-﻿using night_life_sk.Services.persistence;
-
-namespace night_life_sk.Models
+﻿namespace night_life_sk.Models
 {
-    public class PartyPlace : IEntity
+    internal class PartyPlace : IEntity
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Address { get; set; }
-        public double Latitude { get; set; }
-        public double Longitude { get; set;}
-        public virtual AppUser? AppUser { get; set; }
-        public virtual HashSet<PartyEvent>? Events { get; set; }
+        internal string Name { get; set; }
+        internal string Address { get; set; }
+        internal double Latitude { get; set; }
+        internal double Longitude { get; set;}
+        internal virtual AppUser? AppUser { get; set; }
+        internal virtual HashSet<PartyEvent>? Events { get; set; }
         
         public PartyPlace() 
         {
@@ -20,7 +18,7 @@ namespace night_life_sk.Models
             Longitude = 0.0;
         }
 
-        public PartyPlace(int id, string name, string address, double latitude, double longitude)
+        internal PartyPlace(int id, string name, string address, double latitude, double longitude)
         {
             Id = id;
             Name = name;

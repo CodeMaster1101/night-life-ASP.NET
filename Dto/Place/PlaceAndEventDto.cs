@@ -2,5 +2,5 @@
 
 namespace night_life_sk.Dto.Place
 {
-    public record PlaceAndEventDto(string Name, string Address, PartyEventDto? EventDto);
+    internal record PlaceAndEventDto(string Name, string Address, PartyEventDto? EventDto);
 }

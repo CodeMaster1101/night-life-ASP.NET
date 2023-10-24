@@ -2,7 +2,7 @@
 
 namespace night_life_sk.Services
 {
-    public class ScopedServiceProvider
+    internal class ScopedServiceProvider
     {
         private readonly IServiceProvider serviceProvider;
 
@@ -11,18 +11,18 @@ namespace night_life_sk.Services
             this.serviceProvider = serviceProvider;
         }
 
-        public T ExecuteFuncInScope<T>(Func<DataContext, T> operation)
+        internal async Task<T> ExecuteFuncInScopeAsync<T>(Func<DataContext, Task<T>> operation)
         {
             using var scope = serviceProvider.CreateScope();
             var dataContext = scope.ServiceProvider.GetRequiredService<DataContext>();
-            return operation(dataContext);
+            return await operation(dataContext);
         }
 
-        public void ExecuteActionInScope(Action<DataContext> operation)
+        internal async Task ExecuteActionInScopeAsync(Func<DataContext, Task> operation)
         {
             using var scope = serviceProvider.CreateScope();
             var dataContext = scope.ServiceProvider.GetRequiredService<DataContext>();
-            operation(dataContext);
+            await operation(dataContext);
         }
     }
 }

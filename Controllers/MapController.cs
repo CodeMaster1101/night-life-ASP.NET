@@ -2,14 +2,13 @@
 using night_life_sk.Dto.Event;
 using night_life_sk.Dto.Place;
 using night_life_sk.Dto.User;
-using night_life_sk.Models;
 using night_life_sk.Services;
 
 namespace night_life_sk.Controllers
 {
     [Route("api/v1/map")]
     [ApiController]
-    public class MapController : Controller
+    internal class MapController : ControllerBase
     {
         private readonly BaseMapService mapService;
         public MapController(BaseMapService mapService)
@@ -18,38 +17,38 @@ namespace night_life_sk.Controllers
         }
 
         [HttpGet("/coordinates")]
-        [ProducesResponseType(200, Type = typeof(HashSet<PlaceCoordinates>))]
-        public IActionResult GetAllPlaces() => Ok(mapService.GetAllPartyPlaces());
+        [ProducesResponseType(200, Type = typeof(Task<HashSet<PlaceCoordinates>>))]
+        internal async Task<IActionResult> GetAllPlaces() => Ok(await mapService.GetAllPartyPlaces());
 
         [HttpGet("/place-on-click")]
-        [ProducesResponseType(200, Type = typeof(PlaceAndEventDto))]
-        public IActionResult GetPlaceAndEventOnClick (
+        [ProducesResponseType(200, Type = typeof(Task<PlaceAndEventDto>))]
+        internal async Task<IActionResult> GetPlaceAndEventOnClick (
             [FromQuery] double longitude,
             [FromQuery] double latitude,
             [FromQuery] DateTime date)
         {
-            return Ok(mapService.GetPlaceAndEventOnClick(longitude, latitude, date));
+            return Ok(await mapService.GetPlaceAndEventOnClick(longitude, latitude, date));
         }
 
         [HttpGet("/events/{date}")]
-        [ProducesResponseType(200, Type = typeof(HashSet<PartyEventDto>))]
-        public IActionResult GetAllEventsByDate(DateTime date)
+        [ProducesResponseType(200, Type = typeof(Task<HashSet<PartyEventDto>>))]
+        internal async Task<IActionResult> GetAllEventsByDate(DateTime date)
         {
-            return Ok(mapService.GetEventsByDate(date));
+            return Ok(await mapService.GetEventsByDate(date));
         }
 
         [HttpGet("/events/filtered")]
-        [ProducesResponseType(200, Type = typeof(HashSet<PartyEventDto>))]
-        public IActionResult GetFilteredEvents([FromQuery] FilteredEventsDto filteredParam)
+        [ProducesResponseType(200, Type = typeof(Task<HashSet<PlaceCoordinates>>))]
+        internal async Task<IActionResult> GetFilteredEvents([FromQuery] FilteredEventsDto filteredParam)
         {
-            return Ok(mapService.GetFilteredEvents(filteredParam));
+            return Ok(await mapService.GetFilteredEvents(filteredParam));
         }
 
         [HttpGet("/show-interested/{eventName}")]
-        [ProducesResponseType(200, Type = typeof(HashSet<AppUserDto>))]
-        public IActionResult GetInterestedUsersForEvent(string eventName)
+        [ProducesResponseType(200, Type = typeof(Task<HashSet<AppUserDto>>))]
+        internal async Task<IActionResult> GetInterestedUsersForEvent(string eventName)
         {
-            return Ok(mapService.GetInterestedUsersForEvent(eventName));
+            return Ok(await mapService.GetInterestedUsersForEvent(eventName));
         }
     }
 }

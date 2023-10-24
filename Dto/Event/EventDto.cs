@@ -1,12 +1,12 @@
 ﻿namespace night_life_sk.Dto.Event
 {
-    public record EventDto
+    internal record EventDto
     {
-        public string? Name { get; init; }
-        public string? Description { get; init; }
-        public string? Genre { get; init; }
-        public double? Price { get; init; }
-        public string? ImageUrl { get; init; }
-        public DateTime? EventTime { get; init; }
+        internal string? Name { get; init; }
+        internal string? Description { get; init; }
+        internal string? Genre { get; init; }
+        internal double? Price { get; init; }
+        internal string? ImageUrl { get; init; }
+        internal DateTime? EventTime { get; init; }
     }
 }

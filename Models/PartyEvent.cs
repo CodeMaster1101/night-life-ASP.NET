@@ -1,29 +1,29 @@
-﻿using night_life_sk.Services.persistence;
-
-namespace night_life_sk.Models
+﻿namespace night_life_sk.Models
 {
-    public class PartyEvent : IEntity
+    internal class PartyEvent : IEntity
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string Genre { get; set; }
-        public int Price { get; set; }
-        public string ImageUrl { get; set; }
-        public DateTime EventTime { get; set; }
-        public virtual PartyPlace? PartyPlace { get; set; }
-        public virtual HashSet<AppUser>? AppUsers { get; set; }
+        internal string Name { get; set; }
+        internal string Description { get; set; }
+        internal string Genre { get; set; }
+        internal int Price { get; set; }
+        internal string ImageUrl { get; set; }
+        internal DateTime EventTime { get; set; }
+        internal virtual PartyPlace PartyPlace { get; set; }
+        internal virtual HashSet<AppUser>? AppUsers { get; set; }
 
         public PartyEvent()
         {
+            PartyPlace = new PartyPlace();
             Name = string.Empty;
             Description = string.Empty;
             Genre = string.Empty;
             ImageUrl = string.Empty;
         }
 
-        public PartyEvent(string name, string description, string genre, int price, string imageUrl, DateTime time) 
+        internal PartyEvent(string name, string description, string genre, int price, string imageUrl, DateTime time, PartyPlace partyPlace) 
         {
+            PartyPlace = partyPlace;
             Name = name;
             Description = description;
             Genre = genre;
